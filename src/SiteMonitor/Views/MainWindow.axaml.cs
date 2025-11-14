@@ -52,7 +52,7 @@ public partial class MainWindow : Window {
     // handle the command line arguments for updating the application if applicable.
     string[] args = Environment.GetCommandLineArgs();
     if (args.Contains("--update")) {
-      _ = GitHubUpdateManager.PerformUpdateAndRestart("nullinside-development-group", "nullinside-site-monitor", args[2].Trim().Trim('"'), "windows-x64.zip");
+      _ = GitHubUpdateManager.PerformUpdateAndRestart("nullinside-apps", "nullinside-site-monitor", args[2].Trim().Trim('"'), "windows-x64.zip");
       return;
     }
 
@@ -63,7 +63,7 @@ public partial class MainWindow : Window {
     // check for a new version of the application.
     Task.Factory.StartNew(async () => {
       GithubLatestReleaseJson? serverVersion =
-        await GitHubUpdateManager.GetLatestVersion("nullinside-development-group", "nullinside-site-monitor").ConfigureAwait(false);
+        await GitHubUpdateManager.GetLatestVersion("nullinside-apps", "nullinside-site-monitor").ConfigureAwait(false);
       if (null == serverVersion || string.IsNullOrWhiteSpace(serverVersion.name)) {
         return;
       }

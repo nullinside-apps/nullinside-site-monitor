@@ -3,7 +3,7 @@
 export TAG_VERSION=$(git describe --tags --abbrev=0)
 if [[ -z "$TAG_VERSION" ]]; then
     # Get the latest version for the repo
-    export TAG_VERSION=$(curl "https://api.github.com/repos/nullinside-development-group/nullinside-site-monitor/tags" | jq -r '.[0].name')
+    export TAG_VERSION=$(curl "https://api.github.com/repos/nullinside-apps/nullinside-site-monitor/tags" | jq -r '.[0].name')
 fi
 
 major=1
